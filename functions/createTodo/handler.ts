@@ -15,6 +15,11 @@ const handler = async ({ body }: FromSchema<typeof inputSchema>) => {
     date,
   });
 
+  const tata = 'tata';
+
+  console.log(tata);
+  console.log('hello');
+
   return todo;
 };
 
