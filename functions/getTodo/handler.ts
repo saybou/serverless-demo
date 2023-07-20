@@ -15,6 +15,8 @@ const handler = async ({ pathParameters }: FromSchema<typeof inputSchema>) => {
     throw new NotFound();
   }
 
+  console.log('hello');
+
   return todo;
 };
 
