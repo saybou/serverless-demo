@@ -2,6 +2,7 @@
 
 Used in this project:
 
+- [Planity](https://www.planity.com/)
 - [Serverless Framework](https://www.serverless.com/)
 - [Typescript](https://www.typescriptlang.org/)
 - [DynamoDB Toolbox](https://www.dynamodbtoolbox.com/) : Single Table Designs have never been this easy!
