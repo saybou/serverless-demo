@@ -1,7 +1,7 @@
 import { FromSchema } from 'json-schema-to-ts';
 import { v4 as uuid4 } from 'uuid';
-import { applyHttpMiddlewares } from '../../libs/helpers';
-import { Todo } from '../../libs/models/Todo';
+import { applyHttpMiddlewares } from '@slsdemo/common';
+import { Todo } from 'libs/models/Todo';
 
 import inputSchema from './schema';
 

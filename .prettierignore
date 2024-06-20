@@ -1,0 +1,9 @@
+.yarn
+.yarnrc.yml
+yarn.lock
+**/coverage
+**/dist
+**/node_modules
+**/.serverless
+**/.esbuild
+

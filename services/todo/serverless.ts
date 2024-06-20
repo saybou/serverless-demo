@@ -1,4 +1,5 @@
 import { CloudFormationResources, Serverless } from 'serverless/aws';
+import { ref } from '@slsdemo/common';
 
 import createTodo from './functions/createTodo/config';
 import getTodo from './functions/getTodo/config';
@@ -6,7 +7,6 @@ import getTodos from './functions/getTodos/config';
 import helloWorld from './functions/helloWorld/config';
 import indexTodoInAlgolia from './functions/indexTodoInAlgolia/config';
 import { todosTable } from './resources/dynamodb';
-import { ref } from './libs/helpers';
 
 const Resources: CloudFormationResources = { todosTable };
 

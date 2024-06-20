@@ -1,11 +1,6 @@
 import { Entity } from 'dynamodb-toolbox';
 import { TodosTable } from '../tables/todos';
-import {
-  GSI1,
-  GSI1_PK,
-  GSI1_SK,
-  PARTITION_KEY,
-} from '../../resources/dynamodb';
+import { GSI1, GSI1_PK, GSI1_SK, PARTITION_KEY } from 'resources/dynamodb';
 
 export type TodoEntity = {
   id: string;

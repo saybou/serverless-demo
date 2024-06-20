@@ -1,18 +1,23 @@
 {
-  "name": "services-todo",
+  "name": "slsdemo",
   "description": "Serverless Framework v3 demo",
   "version": "1.0.0",
-  "license": "MIT",
+  "license": "UNLICENSED",
   "workspaces": [
+    "common",
     "services/core",
     "services/todo"
   ],
   "devDependencies": {
     "@types/node": "^20.4.2",
+    "@typescript-eslint/eslint-plugin": "^7.13.1",
+    "@typescript-eslint/parser": "^7.13.1",
     "eslint": "^8.45.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
     "prettier": "^3.0.0",
     "ts-node": "^10.9.1",
-    "typescript": "^4.7"
+    "typescript": "^4.9"
   },
   "engines": {
     "node": "^20.14.0",

@@ -2,9 +2,9 @@ import { DynamoDBStreamEvent } from 'aws-lambda';
 import compact from 'lodash/compact';
 
 import { Converter } from 'aws-sdk/clients/dynamodb';
-import { applyHttpMiddlewares } from '../../libs/helpers';
+import { applyHttpMiddlewares } from '@slsdemo/common';
 
-const handler = async (event: DynamoDBStreamEvent): Promise<void> => {
+const handler = (event: DynamoDBStreamEvent): void => {
   const filteredRecords = event.Records.filter(
     record =>
       record.eventName !== undefined &&

@@ -1,4 +1,4 @@
-import { getHandlerPath } from '../../libs/helpers';
+import { getHandlerPath } from '@slsdemo/common';
 
 export default {
   handler: getHandlerPath(__dirname),
