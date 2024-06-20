@@ -1,4 +1,4 @@
-import { applyHttpMiddlewares } from '../../libs/helpers';
+import { applyHttpMiddlewares } from '@slsdemo/common';
 
 const handler = () => {
   const defaultPayload = {

@@ -1,0 +1,12 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "strictFunctionTypes": false,
+    "composite": true,
+    "emitDeclarationOnly": true,
+    "outDir": "./dist/types",
+    "baseUrl": "."
+  },
+  "exclude": ["./dist"],
+  "include": ["./**/*.ts"]
+}

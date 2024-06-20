@@ -1,8 +1,18 @@
 {
-  "name": "serverless-demo-core",
-  "description": "Serverless Framework v3 demo - core",
+  "name": "0-core",
   "version": "1.0.0",
-  "license": "MIT",
+  "license": "UNLICENSED",
+  "scripts": {
+    "deploy": "serverless deploy",
+    "remove": "serverless remove",
+    "sls:info": "serverless info --verbose",
+    "test:all": "yarn test:linter && yarn test:type",
+    "test:type": "tsc --noEmit",
+    "linter-base-config": "eslint --ext=js,ts",
+    "test:linter": "yarn linter-base-config .",
+    "lint:fix": "yarn linter-base-config --fix",
+    "lint:fix-all": "yarn lint:fix ."
+  },
   "devDependencies": {
     "@types/node": "^20.4.2",
     "@types/serverless": "^3.12.13",
@@ -14,6 +24,6 @@
     "serverless-iam-roles-per-function": "^3.2.0",
     "serverless-prune-plugin": "^2.0.2",
     "ts-node": "^10.9.1",
-    "typescript": "^4.7"
+    "typescript": "^5.4"
   }
 }

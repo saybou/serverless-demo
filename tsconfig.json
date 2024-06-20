@@ -17,12 +17,6 @@
     "isolatedModules": true,
     "preserveSymlinks": true,
     "resolveJsonModule": true
-    /*"baseUrl": "./",
-    "rootDir": "./",
-    "paths": {
-      "@libs/*": ["libs/*"]
-    }*/
   },
-  "exclude": ["**/node_modules/**/*"],
-  "include": ["./**/*.ts"]
+  "exclude": ["**/node_modules/**/*"]
 }
