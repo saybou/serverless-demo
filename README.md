@@ -28,6 +28,8 @@ custom: {
 ## Deploy
 
 ```bash
+cd services/[service]
+
 # deploy full stack
 yarn serverless deploy
 
