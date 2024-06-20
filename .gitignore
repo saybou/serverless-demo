@@ -6,3 +6,7 @@ node_modules
 
 # Esbuild directories
 .esbuild
+
+# yarn
+.yarn/*
+!.yarn/releases
