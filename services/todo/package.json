@@ -1,6 +1,6 @@
 {
-  "name": "serverless-demo",
-  "description": "Serverless Framework v3 demo",
+  "name": "serverless-demo-todo",
+  "description": "Serverless Framework v3 demo - todo",
   "version": "1.0.0",
   "license": "MIT",
   "dependencies": {
