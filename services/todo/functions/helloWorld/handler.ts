@@ -5,6 +5,10 @@ const handler = async (
 ): Promise<APIGatewayProxyResult> => {
   const { name } = event.pathParameters;
 
+  await new Promise(resolve => {
+    resolve('');
+  });
+
   return {
     statusCode: 200,
     body: JSON.stringify(

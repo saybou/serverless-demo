@@ -6,9 +6,15 @@ import getTodo from './functions/getTodo/config';
 import getTodos from './functions/getTodos/config';
 import helloWorld from './functions/helloWorld/config';
 import indexTodoInAlgolia from './functions/indexTodoInAlgolia/config';
+import importTodo from './functions/importTodo/config';
 import { todosTable } from './resources/dynamodb';
+import { importTodoDLQ, importTodoQueue } from './resources/sqs';
 
-const Resources: CloudFormationResources = { todosTable };
+const Resources: CloudFormationResources = {
+  importTodoDLQ,
+  importTodoQueue,
+  todosTable,
+};
 
 const serverlessConfiguration: Serverless = {
   service: 'serverless-demo-todo', // Keep it short to have role name below 64
@@ -66,7 +72,14 @@ const serverlessConfiguration: Serverless = {
     },
   },
   package: { individually: true },
-  functions: { createTodo, getTodo, getTodos, helloWorld, indexTodoInAlgolia },
+  functions: {
+    createTodo,
+    getTodo,
+    getTodos,
+    helloWorld,
+    indexTodoInAlgolia,
+    importTodo,
+  },
   custom: {
     projectName: 'serverless-demo',
     environments: {
