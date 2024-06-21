@@ -1,6 +1,7 @@
 import { CloudFormationResources, Serverless } from 'serverless/aws';
 import { ref } from '@slsdemo/common';
 
+import archiveTodos from './functions/archiveTodos/config';
 import createTodo from './functions/createTodo/config';
 import getTodo from './functions/getTodo/config';
 import getTodos from './functions/getTodos/config';
@@ -73,6 +74,7 @@ const serverlessConfiguration: Serverless = {
   },
   package: { individually: true },
   functions: {
+    archiveTodos,
     createTodo,
     getTodo,
     getTodos,
