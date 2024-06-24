@@ -13,6 +13,7 @@ const serverlessConfiguration: Serverless = {
     'serverless-esbuild',
     'serverless-iam-roles-per-function',
     'serverless-prune-plugin',
+    'serverless-domain-manager', // https://www.npmjs.com/package/serverless-domain-manager / https://aws.plainenglish.io/serverless-framework-setting-up-a-custom-domain-to-api-gateway-91064a598f1d
   ],
   provider: {
     name: 'aws',
@@ -56,6 +57,18 @@ const serverlessConfiguration: Serverless = {
       mainFields: ['module', 'main'],
     },
     prune: { automatic: true, includeLayers: true, number: 3 },
+    customDomain: {
+      domainName: 'api.saybou.me',
+      stage: '${self:provider.stage}',
+      basePath: '',
+      certificateName: '*.saybou.me',
+      createRoute53Record: true,
+      createRoute53IPv6Record: true,
+      endpointType: 'REGIONAL',
+      securityPolicy: 'tls_1_2',
+      apiType: 'http',
+      autoDomain: false,
+    },
   },
   resources: {
     Description:
