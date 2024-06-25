@@ -1,5 +1,5 @@
 import { CloudFormationResources, Serverless } from 'serverless/aws';
-import { ref } from '@slsdemo/common';
+import { defaultEnvironment, projectName, ref } from '@slsdemo/common';
 
 import archiveTodos from './functions/archiveTodos/config';
 import createTodo from './functions/createTodo/config';
@@ -18,7 +18,7 @@ const Resources: CloudFormationResources = {
 };
 
 const serverlessConfiguration: Serverless = {
-  service: 'serverless-demo-todo', // Keep it short to have role name below 64
+  service: `${projectName}-todo`, // Keep it short to have role name below 64
   frameworkVersion: '>=3.33.0',
   plugins: [
     'serverless-esbuild',
@@ -31,7 +31,7 @@ const serverlessConfiguration: Serverless = {
     runtime: 'nodejs20.x',
     region: 'eu-west-1',
     profile: '${self:custom.environments.${self:provider.stage}.profile}', // Used to point to the right AWS account
-    stage: `\${opt:stage, 'dev'}`, // Doc: https://www.serverless.com/framework/docs/providers/aws/guide/credentials/
+    stage: `\${opt:stage, '${defaultEnvironment}'}`, // Doc: https://www.serverless.com/framework/docs/providers/aws/guide/credentials/
     apiGateway: { minimumCompressionSize: 1024 },
     environment: {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
@@ -83,7 +83,7 @@ const serverlessConfiguration: Serverless = {
     importTodo,
   },
   custom: {
-    projectName: 'serverless-demo',
+    projectName,
     environments: {
       dev: { profile: 'saybou' },
     },

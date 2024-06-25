@@ -1,4 +1,5 @@
 import { CloudFormationResources, Serverless } from 'serverless/aws';
+import { defaultEnvironment, environments, projectName } from '@slsdemo/common';
 
 import { HttpApiId } from './resources/apiGateway';
 
@@ -7,7 +8,7 @@ import preventApiFromCrawler from './functions/preventApiFromCrawler/config';
 const Resources: CloudFormationResources = {};
 
 const serverlessConfiguration: Serverless = {
-  service: 'serverless-demo-core', // Keep it short to have role name below 64
+  service: `${projectName}-core`, // Keep it short to have role name below 64
   frameworkVersion: '>=3.33.0',
   plugins: [
     'serverless-esbuild',
@@ -21,7 +22,7 @@ const serverlessConfiguration: Serverless = {
     runtime: 'nodejs20.x',
     region: 'eu-west-1',
     profile: '${self:custom.environments.${self:provider.stage}.profile}', // Used to point to the right AWS account
-    stage: `\${opt:stage, 'dev'}`, // Doc: https://www.serverless.com/framework/docs/providers/aws/guide/credentials/
+    stage: `\${opt:stage, '${defaultEnvironment}'}`, // Doc: https://www.serverless.com/framework/docs/providers/aws/guide/credentials/
     apiGateway: { minimumCompressionSize: 1024 },
     environment: {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
@@ -41,10 +42,8 @@ const serverlessConfiguration: Serverless = {
   package: { individually: true },
   functions: { preventApiFromCrawler },
   custom: {
-    projectName: 'serverless-demo',
-    environments: {
-      dev: { profile: 'saybou' },
-    },
+    projectName,
+    environments,
     esbuild: {
       packager: 'yarn',
       bundle: true,
@@ -58,10 +57,12 @@ const serverlessConfiguration: Serverless = {
     },
     prune: { automatic: true, includeLayers: true, number: 3 },
     customDomain: {
-      domainName: 'api.saybou.me',
+      domainName:
+        '${self:custom.environments.${self:provider.stage}.api_subdomain}.${self:custom.environments.${self:provider.stage}.domain}',
       stage: '${self:provider.stage}',
       basePath: '',
-      certificateName: '*.saybou.me',
+      certificateName:
+        '*.${self:custom.environments.${self:provider.stage}.domain}',
       createRoute53Record: true,
       createRoute53IPv6Record: true,
       endpointType: 'REGIONAL',
