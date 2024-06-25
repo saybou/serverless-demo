@@ -9,6 +9,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "0-core@workspace:services/core"
   dependencies:
+    "@slsdemo/common": ^1.0.0
     "@types/node": ^20.4.2
     "@types/serverless": ^3.12.13
     esbuild: ^0.18.13
