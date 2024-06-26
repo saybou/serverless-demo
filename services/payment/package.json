@@ -1,0 +1,46 @@
+{
+  "name": "1-payment",
+  "version": "1.0.0",
+  "license": "UNLICENSED",
+  "scripts": {
+    "deploy": "serverless deploy",
+    "remove": "serverless remove",
+    "sls:info": "serverless info --verbose",
+    "test:all": "yarn test:linter && yarn test:type",
+    "test:type": "tsc --noEmit",
+    "linter-base-config": "eslint --ext=js,ts",
+    "test:linter": "yarn linter-base-config .",
+    "lint:fix": "yarn linter-base-config --fix",
+    "lint:fix-all": "yarn lint:fix ."
+  },
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.602.0",
+    "@aws-sdk/lib-dynamodb": "^3.602.0",
+    "@middy/core": "^4.5.5",
+    "@middy/http-error-handler": "^4.5.5",
+    "@middy/http-json-body-parser": "^4.5.5",
+    "@middy/validator": "^4.5.5",
+    "@slsdemo/common": "^1.0.0",
+    "dynamodb-toolbox": "^0.9.5",
+    "http-errors": "^2.0.0",
+    "lodash": "^4.17.21",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.101",
+    "@types/http-errors": "^2.0.1",
+    "@types/node": "^20.4.2",
+    "@types/serverless": "^3.12.13",
+    "@types/uuid": "^9.0.2",
+    "esbuild": "^0.18.13",
+    "eslint": "^8.45.0",
+    "json-schema-to-ts": "^2.9.1",
+    "prettier": "^3.0.0",
+    "serverless": "^3.33.0",
+    "serverless-esbuild": "^1.46.0",
+    "serverless-iam-roles-per-function": "^3.2.0",
+    "serverless-prune-plugin": "^2.0.2",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.4"
+  }
+}
