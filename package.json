@@ -6,7 +6,8 @@
   "workspaces": [
     "common",
     "services/core",
-    "services/todo"
+    "services/todo",
+    "services/payment"
   ],
   "devDependencies": {
     "@types/node": "^20.4.2",

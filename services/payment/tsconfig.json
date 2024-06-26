@@ -1,0 +1,11 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "preserveSymlinks": true,
+    "baseUrl": ".",
+    "esModuleInterop": true,
+    "resolveJsonModule": true
+  },
+  "references": [{ "path": "../../common" }],
+  "include": ["./**/*.ts"]
+}
