@@ -7,7 +7,9 @@ import {
 export const projectName = 'slsdemo'; // Keep it short to have role name below 64
 export const defaultEnvironment = 'dev'; // Keep it short to have role name below 64
 
-const defaultEnvironmentConfig = {};
+const defaultEnvironmentConfig = {
+  stripeApiKeySsmPath: '/demo-credentials/StripeApiKey',
+};
 
 export const environments: ServerlessEnvironmentConfig = {
   dev: {

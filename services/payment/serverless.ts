@@ -1,5 +1,10 @@
 import { CloudFormationResources, Serverless } from 'serverless/aws';
-import { defaultEnvironment, projectName, ref } from '@slsdemo/common';
+import {
+  defaultEnvironment,
+  environments,
+  projectName,
+  ref,
+} from '@slsdemo/common';
 
 import handlePayment from './functions/handlePayment/config';
 import { receiptTable } from './resources/dynamodb';
@@ -29,6 +34,8 @@ const serverlessConfiguration: Serverless = {
       NODE_OPTIONS: '--enable-source-maps --stack-trace-limit=1000',
       STAGE: '${self:provider.stage}',
       RECEIPT_TABLE_NAME: '${self:custom.receiptTableName}',
+      STRIPE_API_KEY_SSM_PATH:
+        '${self:custom.environments.${self:provider.stage}.stripeApiKeySsmPath}',
       API_ENDPOINT_URL: {
         'Fn::Join': [
           '',
@@ -69,9 +76,7 @@ const serverlessConfiguration: Serverless = {
   },
   custom: {
     projectName,
-    environments: {
-      dev: { profile: 'saybou' },
-    },
+    environments,
     esbuild: {
       packager: 'yarn',
       bundle: true,
