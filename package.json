@@ -9,7 +9,11 @@
     "services/todo",
     "services/payment"
   ],
+  "scripts": {
+    "getSSMParam": "AWS_PROFILE=saybou yarn ts-node scripts/update_credentials.ts dev"
+  },
   "devDependencies": {
+    "@aws-sdk/client-ssm": "^3.606.0",
     "@types/node": "^20.4.2",
     "@typescript-eslint/eslint-plugin": "^7.13.1",
     "@typescript-eslint/parser": "^7.13.1",
