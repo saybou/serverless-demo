@@ -1,16 +1,22 @@
 import { Receipt } from 'libs/models/Receipt';
 import { ReceiptStatus } from 'libs/types/receiptStatus';
 import { v4 as uuid4 } from 'uuid';
-import { PaymentHandler } from './type';
 
-const createPayment: PaymentHandler = async ({ items, seller }) => {
-  if (!items || items.length === 0 || !seller) {
-    throw new Error('Items are required');
+import { ActionProps } from './type';
+import { PaymentAction } from 'libs/types/paymentAction';
+
+const isCreatePaymentProps = (
+  props: ActionProps,
+): props is Extract<ActionProps, { action: PaymentAction.CREATE }> => {
+  return props.action === PaymentAction.CREATE;
+};
+
+const createPayment = async (params: ActionProps) => {
+  if (!isCreatePaymentProps(params)) {
+    throw new Error('Invalid action');
   }
 
-  if (!seller) {
-    throw new Error('Seller is required');
-  }
+  const { items, seller } = params;
 
   const now = new Date();
   const receipt = {
