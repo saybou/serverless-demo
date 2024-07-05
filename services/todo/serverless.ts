@@ -1,5 +1,10 @@
 import { CloudFormationResources, Serverless } from 'serverless/aws';
-import { defaultEnvironment, projectName, ref } from '@slsdemo/common';
+import {
+  defaultEnvironment,
+  environments,
+  projectName,
+  ref,
+} from '@slsdemo/common';
 
 import archiveTodos from './functions/archiveTodos/config';
 import createTodo from './functions/createTodo/config';
@@ -84,9 +89,7 @@ const serverlessConfiguration: Serverless = {
   },
   custom: {
     projectName,
-    environments: {
-      dev: { profile: 'saybou' },
-    },
+    environments,
     esbuild: {
       packager: 'yarn',
       bundle: true,

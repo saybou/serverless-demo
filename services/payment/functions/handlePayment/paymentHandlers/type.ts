@@ -1,10 +1,10 @@
-import { ReceiptEntity } from 'libs/models/Receipt';
-
 import { FromSchema } from 'json-schema-to-ts';
+import { ReceiptEntity } from 'libs/models/Receipt';
+import { PaymentAction } from 'libs/types/paymentAction';
 import inputSchema from '../schema';
 
-export type HandlerProps = FromSchema<typeof inputSchema>['body'];
+export type ActionProps = FromSchema<typeof inputSchema>['body'];
 
-export type PaymentHandler = (
-  receipt: Partial<HandlerProps>,
-) => Promise<ReceiptEntity>;
+export type PaymentHandlersMap = {
+  [K in PaymentAction]: (props: ActionProps) => Promise<ReceiptEntity>;
+};

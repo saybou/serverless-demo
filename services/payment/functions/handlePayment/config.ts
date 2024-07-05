@@ -15,7 +15,7 @@ export default {
     {
       Effect: 'Allow',
       Resource: { 'Fn::GetAtt': ['receiptTable', 'Arn'] },
-      Action: ['dynamodb:PutItem'],
+      Action: ['dynamodb:GetItem', 'dynamodb:PutItem', 'dynamodb:UpdateItem'],
     },
     {
       Effect: 'Allow',

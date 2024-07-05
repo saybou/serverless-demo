@@ -1,14 +1,16 @@
 import { applyHttpMiddlewares, getEnvVariable } from '@slsdemo/common';
-import { PaymentAction } from 'libs/types/paymentAction';
-import { PaymentHandler, createPayment } from './paymentHandlers';
 import { FromSchema } from 'json-schema-to-ts';
-
+import { PaymentAction } from 'libs/types/paymentAction';
+import {
+  PaymentHandlersMap,
+  createPayment,
+  payWithStripe,
+} from './paymentHandlers';
 import inputSchema from './schema';
-
-type PaymentHandlersMap = Record<PaymentAction, PaymentHandler>;
 
 const paymentHandlers: PaymentHandlersMap = {
   [PaymentAction.CREATE]: createPayment,
+  [PaymentAction.PAY_WITH_STRIPE]: payWithStripe,
 };
 
 const ssmParameters = {
@@ -16,12 +18,9 @@ const ssmParameters = {
 };
 
 const handler = async ({ body }: FromSchema<typeof inputSchema>) => {
-  const { action, ...receiptData } = body;
+  const { action } = body;
 
-  const stripeApiKey = getEnvVariable('STRIPE_API_KEY');
-  console.log({ stripeApiKey });
-
-  return await paymentHandlers[action](receiptData);
+  return paymentHandlers[action](body);
 };
 
 export const main = applyHttpMiddlewares(handler, {
